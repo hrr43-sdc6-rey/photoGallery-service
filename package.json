@@ -1,0 +1,28 @@
+{
+  "name": "photo-gallery-service",
+  "version": "1.0.0",
+  "description": "Photo gallery display and modal from guest experience photos",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "react-dev": "webpack -d --watch --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HRR43-Team-Leia/Photo-Gallery-Service.git"
+  },
+  "author": "Katie Swanson",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HRR43-Team-Leia/Photo-Gallery-Service/issues"
+  },
+  "homepage": "https://github.com/HRR43-Team-Leia/Photo-Gallery-Service#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "webpack": "^4.41.5",
+    "webpack-cli": "^3.3.10"
+  }
+}
