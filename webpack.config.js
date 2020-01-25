@@ -2,6 +2,7 @@
 
 module.exports = {
   entry: __dirname + '/src/index.js',
+  mode: 'development',
   module: {
     rules: [
       {
@@ -13,11 +14,16 @@ module.exports = {
             presets: ['@babel/preset-react', '@babel/preset-env']
           }
         }
+
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
    output: {
     filename: 'bundle.js',
-    path: __dirname + '/client/dist'
+    path: __dirname + '/public'
   }
 };
