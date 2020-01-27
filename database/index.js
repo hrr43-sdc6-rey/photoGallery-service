@@ -1,10 +1,6 @@
 var mysql = require('mysql');
-
-var connection = mysql.createConnection( {
-  host: 'localhost',
-  user: 'root',
-  password: ''
-});
+var config = require('../config/config.js');
+var connection = mysql.createConnection(config.mysqlDatabase);
 
 connection.connect(function(error) {
   if (error) {
@@ -14,3 +10,18 @@ connection.connect(function(error) {
   }
 });
 
+//get photos
+
+const getPhotos = (exID, callback) => {
+  var id = exID;
+  var grabAll = 'SELECT * FROM photos WHERE experience_id = ?';
+  connection.query(grabAll, id, (error, response) => {
+    if (error) {
+      callback(error);
+    } else {
+      callback(null, response);
+    }
+  })
+};
+
+modules.exports.getPhotos;
