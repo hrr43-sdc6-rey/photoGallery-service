@@ -1,6 +1,6 @@
 const mysql = require('mysql');
 var config = require('../config/config.js');
-var connection = mysql.createConnection(config.mysqlDatabase);
+var db = require ('./index.js');
 
 const seedData =[
   {
@@ -55,11 +55,11 @@ const seedData =[
 //function to seed database with mock data
 const seedDB = (mockData) => {
 
-  var sqlStatement = 'INSERT INTO photos(photo_url, username, experience_id) VALUES (?, ?, ?)';
 
   for (var i = 0; i < mockData.length; i++) {
-    var dataArgs = [mockData[i].photo_url, mockData[i].username, mockData[i].experience_id];
-    connection.query(sqlStatement, dataArgs, (err, result) => {
+
+    var sqlStatement = `INSERT INTO photos(photo_url, username, experience_id) VALUES ('${mockData[i].photo_url}', '${mockData[i].username}', '${mockData[i].experience_id}')`;
+    db.query(sqlStatement, (err, result) => {
       if (err) {
         console.log(err);
       } else {
@@ -68,5 +68,7 @@ const seedDB = (mockData) => {
     })
   }
 };
+
+
 
 seedDB(seedData);

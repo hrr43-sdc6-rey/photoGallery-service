@@ -1,21 +1,19 @@
 var mysql = require('mysql');
 var config = require('../config/config.js');
-var connection = mysql.createConnection(config.mysqlDatabase);
+var db = mysql.createConnection(config);
 
-connection.connect(function(error) {
+db.connect(function(error) {
   if (error) {
-    throw error
+    console.log(error);
   } else {
-    console.log('==mySQL is connected==')
+    console.log('==mySQL is connected==');
   }
 });
 
-//get photos
 
-const getPhotos = (exID, callback) => {
-  var id = exID;
-  var grabAll = 'SELECT * FROM photos WHERE experience_id = ?';
-  connection.query(grabAll, id, (error, response) => {
+const getPhotos = (experienceID, callback) => {
+  var grabAll = `SELECT * FROM photos WHERE experience_id = ${experienceID}`;
+  db.query(grabAll, experienceID, (error, response) => {
     if (error) {
       callback(error);
     } else {
@@ -24,4 +22,8 @@ const getPhotos = (exID, callback) => {
   })
 };
 
-modules.exports.getPhotos;
+
+module.exports = {
+  db: db,
+  getPhotos: getPhotos
+};

@@ -11,5 +11,3 @@ CREATE TABLE photos (
   experience_id int NOT NULL,
   PRIMARY KEY(photo_id)
 );
-
--- INSERT INTO guestphotos (photo_id, photo_url, username, experience_id) VALUES (?,?,?,?);
