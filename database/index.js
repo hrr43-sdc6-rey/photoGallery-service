@@ -11,9 +11,10 @@ db.connect(function(error) {
 });
 
 
-const getPhotos = (experienceID, callback) => {
-  var grabAll = `SELECT * FROM photos WHERE experience_id = ${experienceID}`;
-  db.query(grabAll, experienceID, (error, response) => {
+const getPhotos = function (experienceID, callback) {
+  var id = experienceID
+  var grabAll = `SELECT * FROM photos WHERE experience_id = '${experienceID}'`;
+  db.query(grabAll, id, (error, response) => {
     if (error) {
       callback(error);
     } else {
@@ -24,6 +25,6 @@ const getPhotos = (experienceID, callback) => {
 
 
 module.exports = {
-  db: db,
-  getPhotos: getPhotos
+  getPhotos: getPhotos,
+  db: db
 };

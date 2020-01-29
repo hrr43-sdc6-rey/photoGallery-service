@@ -1,4 +1,4 @@
-DROP DATABASE IF EXISTS guestphotos;
+
 
 CREATE DATABASE guestphotos;
 
