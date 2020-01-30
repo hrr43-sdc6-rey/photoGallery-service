@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import Enzyme from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 import axios from 'axios';
 // import PhotoGrid from './components/PhotoGrid.js';
 //import Photos from './components/Photos.js';
 
-// Enzyme.configure({ adapter: new Adapter() });
+Enzyme.configure({ adapter: new Adapter() });
 
 console.log('testing');
 
