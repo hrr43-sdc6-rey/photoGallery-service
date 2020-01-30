@@ -52,16 +52,15 @@ const seedData =[
   }
 ]
 
-//function to seed database with mock data
+console.log()
+
 const seedDB = (mockData) => {
 
-
   for (var i = 0; i < mockData.length; i++) {
-
     var sqlStatement = `INSERT INTO photos(photo_url, username, experience_id) VALUES ('${mockData[i].photo_url}', '${mockData[i].username}', '${mockData[i].experience_id}')`;
-    db.query(sqlStatement, (err, result) => {
-      if (err) {
-        console.log(err);
+    db.db.query(sqlStatement, (error, result) => {
+      if (error) {
+        console.log(error);
       } else {
         console.log('Query Results: ', result);
       }
