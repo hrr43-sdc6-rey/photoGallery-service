@@ -50,9 +50,7 @@ const seedData =[
     username: 'Kip',
     experience_id: 3
   }
-]
-
-console.log()
+];
 
 const seedDB = (mockData) => {
 
@@ -67,7 +65,6 @@ const seedDB = (mockData) => {
     })
   }
 };
-
 
 
 seedDB(seedData);

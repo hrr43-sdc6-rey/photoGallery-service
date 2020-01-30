@@ -9,7 +9,6 @@ app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
 app.get('/:experience_id', (req, res) => {
-  //db get photos function(request's db id)
   db.getPhotos(req.params.experience_id, (error, exData) => {
     if (error) {
       res.status(400).send(error);

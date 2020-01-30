@@ -11,3 +11,4 @@ CREATE TABLE photos (
   experience_id int NOT NULL,
   PRIMARY KEY(photo_id)
 );
+

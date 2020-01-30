@@ -10,7 +10,6 @@ db.connect(function(error) {
   }
 });
 
-
 const getPhotos = function (experienceID, callback) {
   var id = experienceID
   var grabAll = `SELECT * FROM photos WHERE experience_id = '${experienceID}'`;
