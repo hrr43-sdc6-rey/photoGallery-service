@@ -8,6 +8,7 @@ import axios from 'axios';
 
 // Enzyme.configure({ adapter: new Adapter() });
 
+console.log('testing');
 
 class App extends React.Component {
   constructor(props) {

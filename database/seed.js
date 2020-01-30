@@ -68,3 +68,5 @@ const seedDB = (mockData) => {
 };
 
 seedDB(seedData);
+
+console.log('testing');

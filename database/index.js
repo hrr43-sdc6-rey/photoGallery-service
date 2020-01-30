@@ -27,3 +27,5 @@ module.exports = {
   getPhotos: getPhotos,
   db: db
 };
+
+console.log('testing');

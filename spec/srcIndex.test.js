@@ -17,3 +17,6 @@ const containerDiv = shallow(<App.photoGrid.photos={[]} />)
     expect(photo.length > 0).toBeTruthy();
   })
 });
+
+
+console.log('testing');
