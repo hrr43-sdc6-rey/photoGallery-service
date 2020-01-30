@@ -2,6 +2,7 @@ const mysql = require('mysql');
 var config = require('../config/config.js');
 var db = require ('./index.js');
 
+
 const seedData =[
   {
     photo_url: 'https://tlguestphotos.s3-us-west-2.amazonaws.com/teamleia/bruna-branco-t8hTmte4O_g-unsplash.jpg',
@@ -65,6 +66,5 @@ const seedDB = (mockData) => {
     })
   }
 };
-
 
 seedDB(seedData);

@@ -8,6 +8,7 @@ Enzyme.configure({ adapter: new Adapter() });
 
 const appTest = require('../src/index.js')
 
+
 describe('Each photo', () => {
 const containerDiv = shallow(<App.photoGrid.photos={[]} />)
 
