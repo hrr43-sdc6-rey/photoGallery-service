@@ -2,56 +2,55 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
+import axios from 'axios';
+// import PhotoGrid from './components/PhotoGrid.js';
+//import Photos from './components/Photos.js';
 
 Enzyme.configure({ adapter: new Adapter() });
-
-// function Welcome(props) {
-//   return <h3>Hello, {props.name}</h3>
-// }
-
-// const element = <Welcome name="Katie" />;
-
-// ReactDOM.render(element, document.getElementById('app'));
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [],
-      isLoaded: false
+      photos: []
     }
   }
 
   componentDidMount() {
-    fetch('http://localhost:3003/2')
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          isLoaded: true,
-          items: json
-        })
-      });
+    let url = "http://localhost:3003/2";
+    axios.get(url)
+      .then(res => {
+        this.setState({photos: res.data });
+        console.log('PRINT RES.DATA: ',res.data)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
+
   render() {
-    var { isLoaded, items } = this.state;
 
-    if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-          <ul>
-            {items.map(item => (
-              <li key={item.photo_id}>
-                user: {item.username}  |  photo id: {item.photo_id}
-                <img src={item.photo_url} />
-              </li>
-            ))};
-          </ul>
-
-      );
+    if (!this.state.photos.length) {
+      return <div><p>No guest photos from this experience</p></div>
     }
+
+    const photoGrid =
+      this.state.photos.map(photo => (
+        <div key={photo.photo_id}>
+          <img src={photo.photo_url}></img>
+          <div>{photo.username}</div>
+        </div>
+    ));
+
+    return (
+      <div>
+        <div className="gridContainer">
+          {photoGrid}
+        </div>
+      </div>
+      );
   }
 }
 
-  ReactDOM.render(<App/>, document.getElementById('app'));
+ReactDOM.render(<App />, document.getElementById('app'));
