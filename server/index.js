@@ -1,24 +1,30 @@
 const express = require('express');
+const ejs = require('ejs');
 const app = express();
-const port = 3003;
+const port = process.env.PORT || 3003;
 var db = require ('../database/index.js');
 const bodyParser = require('body-parser');
 
-app.use(express.static('./public'));
+
+app.use(express.static('../public'));
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
-app.get('/:experience_id', (req, res) => {
-  db.getPhotos(req.params.experience_id, (error, exData) => {
-    if (error) {
-      res.status(400).send(error);
+app.engine('html', require('ejs').renderFile);
+
+app.get('/:id', (req, res) => {
+  res.render('../public/index.html');
+})
+
+app.get('/photos/:id', (req, res) => {
+  db.getExperiences(req.params.id, (err, data) => {
+    if (err) {
+      res.status(400).send(err);
     } else {
-      res.status(200).send(exData)
+      res.status(200).send(data);
     }
-  });
-});
+  })
+})
 
 
 app.listen(port, () => console.log(`App listening on port ${port}`));
-
-console.log('testing');

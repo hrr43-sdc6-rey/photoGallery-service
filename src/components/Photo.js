@@ -1,14 +1,40 @@
-// import React from 'react';
-// import ReactDOM from 'react-dom';
+import React from 'react';
 
-// function Photo(props) {
-//   return (
-//     <div>
-//         <img className="photo" src={props.photos.photo_url}></img>
-//         <p className="user">{props.photos.username}</p>
-//         <p className="photoID">{props.photos.photo_id}</p>
-//     </div>
-//   )
-// }
 
-// export default Photo;
+class Photo extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="gridphoto">
+          <img src={this.props.images[0]} alt={this.props.alt[0]} />
+        </div>
+
+        <div className="gridphoto">
+          <img src={this.props.images[1]} alt={this.props.alt[1]} />
+        </div>
+
+        <div className="gridphoto">
+          <img src={this.props.images[2]} alt={this.props.alt[2]} />
+        </div>
+
+        <div className="gridphoto">
+          <img src={this.props.images[3]} alt={this.props.alt[3]} />
+        </div>
+
+        <div className="gridphoto">
+          <img src={this.props.images[4]} alt={this.props.alt[4]} />
+        </div>
+
+        <div className="gridphoto">
+          <img src={this.props.images[5]} alt={this.props.alt[5]} />
+        </div>
+      </div>
+    )
+  }
+};
+
+export default Photo;
