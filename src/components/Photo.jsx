@@ -9,7 +9,8 @@ class Photo extends React.Component {
   render() {
     return (
       <div>
-        <div className="gridphoto">
+        Hello. My Photo Component is rendering.
+        {/* <div className="gridphoto">
           <img src={this.props.images[0]} alt={this.props.alt[0]} />
         </div>
 
@@ -33,6 +34,8 @@ class Photo extends React.Component {
           <img src={this.props.images[5]} alt={this.props.alt[5]} />
         </div>
       </div>
+    ) */}
+    </div>
     )
   }
 };
