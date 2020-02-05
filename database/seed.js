@@ -1,10 +1,6 @@
 
-const mysql = require('mysql');
-const config = require('../config/config.js');
-const db = require ('./index.js');
-
 const faker = require('faker');
-
+const db = require('./index.jsx');
 
 function getRandomInt(min1, max1) {
   const min = Math.ceil(min1);
@@ -15,10 +11,9 @@ function getRandomInt(min1, max1) {
 const seedData = () => {
 
   for (let ex = 1; ex < 101; ex += 1) {
-    let photoCount = getRandomInt(9, 21);
+    const photoCount = getRandomInt(9, 21);
     for (let k = 1; k <= photoCount; k += 1) {
-
-      let photoIdentification = getRandomInt(100, 201)
+      const photoIdentification = getRandomInt(100, 201);
       const photoPath = `https://tlguestphotos.s3-us-west-2.amazonaws.com/teamleia/photo/${photoIdentification}.jpg`;
       const fakeName = faker.name.firstName();
       const fakeAlt = faker.random.word();
@@ -29,7 +24,7 @@ const seedData = () => {
         } else {
           console.log('Seed Success: ', result);
         }
-      })
+      });
     }
   }
 };

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "build": "webpack -d --mode development --watch --config webpack.config.js",
-    "start": "nodemon ./server/index.jsx",
+    "start": "nodemon ./server/index.jsx --watch",
     "seed": "node ./database/seed.js"
   },
   "repository": {

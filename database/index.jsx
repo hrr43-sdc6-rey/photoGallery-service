@@ -13,7 +13,8 @@ db.connect((error) => {
 });
 
 const getPhotos = (expId, callback) => {
-  const grabAll = `SELECT * FROM photos WHERE experienceId = '${expId}'`;
+  const experienceId = expId;
+  const grabAll = 'SELECT * FROM photos WHERE experienceId = ?';
   db.query(grabAll, expId, (error, response) => {
     if (error) {
       console.log('HERE IS THE ERROR: ', error);
