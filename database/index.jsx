@@ -17,7 +17,7 @@ const getPhotos = (expId, callback) => {
   const grabAll = 'SELECT * FROM photos WHERE experienceId = ?';
   db.query(grabAll, expId, (error, response) => {
     if (error) {
-      console.log('HERE IS THE ERROR: ', error);
+      console.log('ERROR: ', error);
       callback(error);
     } else {
       callback(null, response);
