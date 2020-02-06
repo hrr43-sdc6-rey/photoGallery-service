@@ -19,8 +19,6 @@ app.get('/:id', (req, res) => {
 
 app.get('/photos/:id', (req, res) => {
   const requestExpId = parseInt(req.params.id, 10);
-  console.log('requestExpId:', requestExpId);
-  console.log('DOES THIS PRINT: ', requestExpId);
   db.getPhotos(requestExpId, (err, exData) => {
     if (err) {
       res.status(400).send(err);

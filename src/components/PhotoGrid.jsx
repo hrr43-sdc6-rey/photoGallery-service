@@ -4,7 +4,6 @@ import Photo from './Photo.jsx';
 
 
 function PhotoGrid({ photos }) {
-  console.log('PhotoGrid: ', photos);
   return (
     <div>
       {photos.map((photo) => {
@@ -12,9 +11,7 @@ function PhotoGrid({ photos }) {
         const photoUrl = photo.photoUrl;
         const alt = photo.alt;
         return (
-
           <Photo key={key} photoUrl={photoUrl} alt={alt} />
-
         );
       })}
     </div>

@@ -28,33 +28,27 @@ class App extends Component {
 
 
   componentDidMount() {
-
     const urlSplit = window.location.href.split('/');
-    console.log('THIS IS THE SPLIT UP ARRAY FOR THE URL: ', urlSplit);
     const experienceId = parseInt(urlSplit[urlSplit.length - 1], 10);
 
     const { photos } = this.state;
-
 
     axios.get(`/photos/${experienceId}`)
       .then((res) => {
 
         this.setState({
           photos: res.data,
-        });  //setting state
+        });
 
-
-        console.log('THIS IS PHOTOS ARRAY OF OBJS for this experience: ', photos);
       })
       .catch((err) => {
-        console.log('HEY Axios Error: ', err);
+        console.log('Axios Error: ', err);
       });
   }
 
 
   render() {
     const { photos } = this.state;
-    console.log('What data am I getting here: ', photos);
     return (
       <PhotoGalleryContainer className="photoGalleryContainer">
         <ContentContainer className="contentContainer">

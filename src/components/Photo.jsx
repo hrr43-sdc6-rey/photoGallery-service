@@ -1,10 +1,7 @@
 import React from 'react';
 import Proptype from 'prop-types';
-// import PhotoGrid from './PhotoGrid.jsx';
 
 function Photo({ photoUrl, alt }) {
-
-  console.log('PHOTO URL: ', photoUrl, "ALT: ", alt);
   return (
     <div className="gridPhoto">
       <div className="gridImage">
