@@ -1,4 +1,75 @@
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: aliceblue;
+  font-family: 'Roboto', sans-serif;
+}
+
+.photoGalleryContainer {
+  background-color: #ffffff
+
+}
+
+.contentContainer {
+  padding: 47px;
+  margin: 0 auto 0 auto;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.left {
+ display: flex;
+ flex-direction: row;
+ flex-wrap: wrap;
+ justify-content: flex-start;
+ width: 35%;
+ font-family: 'Roboto', sans-serif;
+ font-size: 26px;
+ font-weight: 500;
+ color: #484848;
+}
+
+.right {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  align-content: stretch;
+  width: 65%;
+}
+
+.gridPhoto {
+  width: 200px;
+  height: 200px;
+  background-color:#ffffff;
+  margin: 7.5px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.gridImage img{
+  max-width: auto;
+  max-height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  height: 100%;
+  width: auto;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+}
+
+
+
+.showAllPhotos {
+  width: 100%;
+  margin-left: 7.5px;
+  padding-top: 23.5px;
+  font-weight: 400;
+  color: #008489;
+  font-size: 14px;
 }

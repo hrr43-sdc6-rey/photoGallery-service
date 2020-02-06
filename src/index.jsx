@@ -1,47 +1,82 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Photo from './components/Photo.jsx';
-import PropTypes from 'prop-types';
+import styled from 'styled-components';
+import Proptype from 'prop-types';
+import PhotoGrid from './components/PhotoGrid.jsx';
+import '../public/styles.css';
 
 
-class App extends React.Component {
+const PhotoGalleryContainer = styled.div`
+  justifyContent: center;
+  flexDirection: row;
+`;
+
+const ContentContainer = styled.div`
+  flexDirection: row;
+  justifyContent: center;
+`;
+
+
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       photos: [],
-    }
+    };
   }
 
 
   componentDidMount() {
-    const url = window.location.href;
-    console.log('THE URL: ', url);
     const urlSplit = window.location.href.split('/');
-    console.log('THIS IS THE URL SPLIT UP: ', urlSplit);
-    const experienceId = parseInt(url[url.length - 1], 10);
-    console.log('HEYYY: ', experienceId);
+    const experienceId = parseInt(urlSplit[urlSplit.length - 1], 10);
+
+    const { photos } = this.state;
 
     axios.get(`/photos/${experienceId}`)
       .then((res) => {
-        console.log('PRINT RES: ', res);
-        this.setState({ photos: res.data });
+
+        this.setState({
+          photos: res.data,
+        });
+
       })
       .catch((err) => {
-        console.log('HEY Axios Error: ', err);
-      })
+        console.log('Axios Error: ', err);
+      });
   }
 
 
   render() {
+    const { photos } = this.state;
     return (
-      <div>
-        <div> Is index Mounting? Yes.</div>
-          <Photo imageUrl={this.state.imageUrl} />
+      <PhotoGalleryContainer className="photoGalleryContainer">
+        <ContentContainer className="contentContainer">
 
-      </div>
-    )
+          <div className="left">
+            <div>Guest photos</div>
+          </div>
+
+          <div className="right">
+            <PhotoGrid photos={photos} />
+            <div className="showAllPhotos">Show All Photos</div>
+          </div>
+
+        </ContentContainer>
+      </PhotoGalleryContainer>
+    );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+App.propType = {
+  photos: Proptype.exact({
+    map: Proptype.array.isRequired,
+    photoUrl: Proptype.string.isRequired,
+    alt: Proptype.string.isRequired,
+    username: Proptype.string,
+    experienceId: Proptype.number,
+  }),
+};
+
+
+ReactDOM.render(<App />, document.getElementById('photo-gallery'));
