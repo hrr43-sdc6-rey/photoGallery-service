@@ -34,12 +34,14 @@ body {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: flex-start;
-  align-items: baseline;
   align-content: stretch;
   width: 65%;
 }
 
 .gridPhoto {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
   width: 200px;
   height: 200px;
   background-color:#ffffff;
@@ -51,13 +53,15 @@ body {
 }
 
 .gridImage img{
+  object-fit: contain;
   max-width: auto;
-  max-height: 200px;
+  max-height: 150%;
+  object-fit: cover;
+  vertical-align: bottom;
+
   position: absolute;
   left: 50%;
   top: 50%;
-  height: 100%;
-  width: auto;
   -webkit-transform: translate(-50%,-50%);
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
