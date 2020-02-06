@@ -4,8 +4,14 @@ import Photo from './Photo.jsx';
 
 
 function PhotoGrid({ photos }) {
+  const gridPhotos = [];
+
+  photos.splice(0, 6);
+
+  console.log('Grid Photos Array: ', photos);
   return (
     <div>
+
       {photos.map((photo) => {
         const key = photo.photoId;
         const photoUrl = photo.photoUrl;

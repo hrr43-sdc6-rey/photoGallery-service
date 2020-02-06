@@ -1,19 +1,20 @@
-// //import React from 'react';
-// // const renderItem = require('../src/index.js');
-// import Enzyme from 'enzyme';
-// import Adapter from 'enzyme-adapter-react-16';
+import React from 'react';
+import App from '../src/index.jsx';
+import Enzyme from 'enzyme';
+import { shallow } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-// Enzyme.configure({ adapter: new Adapter() });
-
-
-// const appTest = require('../src/index.js')
+Enzyme.configure({ adapter: new Adapter() });
 
 
-// describe('Each photo', () => {
-// const containerDiv = shallow(<App.photoGrid.photos={[]} />)
+const appTest = require('../src/index.js')
 
-//   it('should have a url path', () => {
-//     const photo = containerDiv.find('img')
-//     expect(photo.length > 0).toBeTruthy();
-//   })
-// });
+//want to test that the array of objects has more than 9 objects for each experience
+describe('Experience Photo List ', () => {
+  const containerDiv = shallow(<App.photoGrid={[]} />)
+
+  it("should have > 9 photos", () => {
+    const photos = shallow(<PhotoGrid.photos />);
+    expect(photos.length > 9).toBeTruthy();
+  })
+});
