@@ -3,3 +3,4 @@ dist
 notes.txt
 config/config.js
 coverage
+public/bundle.js

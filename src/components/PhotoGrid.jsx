@@ -6,7 +6,7 @@ import Photo from './Photo.jsx';
 function PhotoGrid({ photos }) {
   return (
     <div>
-      {photos.map((photo) => {
+      {(photos.slice(0, 6)).map((photo) => {
         const key = photo.photoId;
         const photoUrl = photo.photoUrl;
         const alt = photo.alt;
