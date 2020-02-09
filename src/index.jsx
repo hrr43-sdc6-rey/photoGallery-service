@@ -102,6 +102,8 @@ class App extends Component {
 //     show everything but the modal
 //     if it is, show just the modal and nothing else
 
+  // if ()
+
     return (
       <div>
         <PhotoGalleryContainer className="photoGalleryContainer">
