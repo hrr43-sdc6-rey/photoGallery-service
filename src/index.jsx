@@ -75,16 +75,19 @@ class App extends Component {
 
   swipeToLast() {
     const newIndex = this.state.heroPhotoIndex - 1;
-    const newHeroPhoto = this.state.photos[newIndex - 1];
+
+    const newHeroPhoto = this.state.photos[newIndex];
+
     this.setState({
       heroPhotoIndex: newIndex,
       heroPhoto: newHeroPhoto,
     });
+    console.log('NEW INDEX: ', newIndex);
   }
 
   swipeToNext() {
     const currentPhotoIndex = this.state.heroPhotoIndex + 1;
-    const lastHeroPhoto = this.state.photos[currentPhotoIndex + 1];
+    const lastHeroPhoto = this.state.photos[currentPhotoIndex];
     this.setState({
       heroPhotoIndex: currentPhotoIndex,
       heroPhoto: lastHeroPhoto,
@@ -92,7 +95,6 @@ class App extends Component {
   }
 
   render() {
-
 //conditional render
  //if modal is open is true do this
  //if this.state == false
@@ -105,7 +107,7 @@ class App extends Component {
         <PhotoGalleryContainer className="photoGalleryContainer">
           <ContentContainer className="contentContainer">
 
-            <div className="left">
+            <div>
               <div className="titleContainer">
                 <h2>Guest photos</h2>
               </div>
@@ -116,12 +118,14 @@ class App extends Component {
               <button type="button" className="showAllPhotos" id="modalButton">Show All Photos </button>
             </div>
 
-            <div className="modal">
+            <div className="fullPageModal">
+
               <div className="modalPhotoContainer">
                 <Modal heroPhoto={this.state.heroPhoto} exitModal={this.exitModal} swipeToLast={this.swipeToLast.bind(this)} swipeToNext={this.swipeToNext.bind(this)} />
 
                 {/* incluse exit modal */}
               </div>
+
             </div>
 
           </ContentContainer>

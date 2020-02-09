@@ -38,6 +38,10 @@ body {
   width: 65%;
 }
 
+.titleContainer {
+  flex: sticky;
+}
+
 .gridPhoto {
   display: flex;
   flex-wrap: wrap;
@@ -76,73 +80,39 @@ body {
   color: #008489;
   font-size: 14px;
 }
-/*
-#modalButton:hover {
-  text-decoration: underline;
-} */
+
+
+
+
+.displayPhotoContainer {
+  width: 715px;
+  height: 550px;
+  position: relative;
+}
+
+
 
 .modal {
-  /* display: none; */
-  /* position: fixed; */
-  z-index: 2;
   left: 0;
   top:0;
   height: 100%;
-  width:100%;
-  /* overflow: auto; */
-  /* background-color: #ffffff; */
-  background-color:  #008489;
-}
-
-/* .modalContent { */
-  /* padding: 0 50px 50px 50px; */
-  /* margin: 0 auto 0 auto;
-}
-
-.exitButton {
-  color: #484848;
-  float: left;
-  font-size: 30px;
-  margin: 20px;
-  border: #484848;
-}
-
-.exitButton:hover {
-  text-decoration-color: yellow;
-}
-
-.hello {
-  background-color:  #008489;
-} */
-
-.titleContainer {
-  flex: sticky;
-}
-
-/* .modalPhotoContainer {
+  width: 100%;
   display: flex;
-  justify-content: flex-start;
-  width: 80%;
-  height: 80%;
-  background-color: #303030;
-} */
-
-.displayPhotoContainer {
-
-  width: 415px;
-  height: 550px;
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
-  overflow: hidden;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: flex-start;
+  align-items: center;
+  background-color:  lightgrey;
 }
 
 .displayPhoto img{
+  border-radius: 2.5%;
+  flex: 3;
   object-fit: contain;
-  max-width: auto;
+  max-width: 100%;
   max-height: 100%;
-  object-fit: cover;
-  vertical-align: bottom;
+
   position: absolute;
   left: 50%;
   top: 50%;
@@ -150,3 +120,36 @@ body {
       -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
 }
+
+.scrollButtons {
+  z-index: 5;
+  border: none;
+  color:  #484848;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+
+  text-decoration: none;
+  flex: 1;
+}
+
+#leftB {
+  padding: 45% 50px  45% 5px;
+}
+
+#rightB {
+  padding: 45% 5px 45% 50px;
+}
+
+.fullPageModal {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: stretch;
+    margin: auto;
+    width: 50%;
+    padding: 100px;
+    width: 100%;
+    background-color:#ffffff;
+  }
