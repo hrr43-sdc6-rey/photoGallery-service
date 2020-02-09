@@ -1,25 +1,24 @@
-import React from 'react';
-import Proptype from 'prop-types';
-import Photo from './Photo.jsx';
+// import React from 'react';
+// import Proptype from 'prop-types';
+// import Photo from './Photo.jsx';
 
 
-function CompletePhotoList({ photos }) {
-  return (
-    <div>
-      {photos.map((photo) => {
-        const key = photo.photoId;
-        const photoUrl = photo.photoUrl;
-        const alt = photo.alt;
-        const username = photo.username;
-        return (
-          <Photo key={key} photoUrl={photoUrl} alt={alt} username={username} />
-        );
-      })}
-    </div>
-  );
-}
+// function CompletePhotoList({ photos }) {
+//   return (
+//     <div>
+//       {(photos.slice(0, 6)).map((photo) => {
+//         const photoId = photo.photoId;
+//         const photoUrl = photo.photoUrl;
+//         const alt = photo.alt;
+//         return (
+//           <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
+//         );
+//       })}
+//     </div>
+//   );
+// }
 
-// completePhotoList.propType = {
+// CompletePhotoList.propType = {
 //   photos: Proptype.exact({
 //     map: Proptype.array.isRequired,
 //     photoId: Proptype.number,
@@ -31,4 +30,4 @@ function CompletePhotoList({ photos }) {
 // };
 
 
-export default CompletePhotoList;
+// export default CompletePhotoList;

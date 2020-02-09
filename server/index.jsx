@@ -1,10 +1,12 @@
 const express = require('express');
-
+const cors = require('cors');
 const app = express();
 const bodyParser = require('body-parser');
 const db = require('../database/index.jsx');
 
 const port = process.env.PORT || 3003;
+
+app.use(cors());
 
 
 app.use(express.static('./public'));

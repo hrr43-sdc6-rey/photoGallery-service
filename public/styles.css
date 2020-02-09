@@ -82,8 +82,8 @@ body {
 } */
 
 .modal {
-  display: none;
-  position: fixed;
+  /* display: none; */
+  /* position: fixed; */
   z-index: 2;
   left: 0;
   top:0;
@@ -115,8 +115,38 @@ body {
   background-color:  #008489;
 } */
 
-
-
 .titleContainer {
   flex: sticky;
+}
+
+/* .modalPhotoContainer {
+  display: flex;
+  justify-content: flex-start;
+  width: 80%;
+  height: 80%;
+  background-color: #303030;
+} */
+
+.displayPhotoContainer {
+
+  width: 415px;
+  height: 550px;
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.displayPhoto img{
+  object-fit: contain;
+  max-width: auto;
+  max-height: 100%;
+  object-fit: cover;
+  vertical-align: bottom;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
 }

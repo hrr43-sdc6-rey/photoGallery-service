@@ -1,5 +1,5 @@
 import React from 'react';
-import Proptype from 'prop-types';
+import PropTypes from 'prop-types';
 import Photo from './Photo.jsx';
 
 
@@ -11,7 +11,12 @@ function PhotoGrid({ photos }) {
         const photoUrl = photo.photoUrl;
         const alt = photo.alt;
         return (
+          <div className="gridPhoto">
+          <div className="gridImage">
           <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
+          </div>
+      </div>
+
         );
       })}
     </div>

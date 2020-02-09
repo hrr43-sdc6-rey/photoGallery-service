@@ -41,10 +41,16 @@ class App extends Component {
 
     axios.get(`/photos/${experienceId}`)
       .then((res) => {
+        const photos = res.data;
+        const heroPhoto = photos[0];
         this.setState({
-          photos: res.data,
-          heroPhoto: res.data[0].photoUrl
+          photos: photos,
+          heroPhoto: heroPhoto
         });
+        console.log('HERO PHOTO: ', this.state.heroPhoto);
+        //res.data is an array of objects
+        //photos is undefined
+        //hero photo is undefined
       })
       .catch((err) => {
         console.log('Axios Error: ', err);
@@ -57,6 +63,10 @@ class App extends Component {
     });
   }
 
+  //conditional render
+    //if isOpen is false show regular
+    //if true, just show modal
+
   exitModal() {
     this.setState({
       isOpen: false,
@@ -64,43 +74,60 @@ class App extends Component {
   }
 
   swipeToLast() {
-    const currentPhotoIndex = this.state.heroPhotoIndex
+    const newIndex = this.state.heroPhotoIndex - 1;
+    const newHeroPhoto = this.state.photos[newIndex - 1];
     this.setState({
-      heroPhotoIndex: currentPhotoIndex - 1,
-      heroPhoto: this.props.photos[currentPhotoIndex - 1].photoUrl
+      heroPhotoIndex: newIndex,
+      heroPhoto: newHeroPhoto,
     });
   }
 
   swipeToNext() {
-    const currentPhotoIndex = this.state.heroPhotoIndex
+    const currentPhotoIndex = this.state.heroPhotoIndex + 1;
+    const lastHeroPhoto = this.state.photos[currentPhotoIndex + 1];
     this.setState({
-      heroPhotoIndex: currentPhotoIndex + 1,
-      heroPhoto: this.props.photos[currentPhotoIndex + 1].photoUrl
+      heroPhotoIndex: currentPhotoIndex,
+      heroPhoto: lastHeroPhoto,
     });
   }
 
   render() {
+
+//conditional render
+ //if modal is open is true do this
+ //if this.state == false
+//  return
+//     show everything but the modal
+//     if it is, show just the modal and nothing else
+
     return (
-      <PhotoGalleryContainer className="photoGalleryContainer">
-        <ContentContainer className="contentContainer">
+      <div>
+        <PhotoGalleryContainer className="photoGalleryContainer">
+          <ContentContainer className="contentContainer">
 
-          <div className="left">
-            <div className="titleContainer">
-              <h2>Guest photos</h2>
+            <div className="left">
+              <div className="titleContainer">
+                <h2>Guest photos</h2>
+              </div>
             </div>
-          </div>
 
-          <div className="right">
-            <PhotoGrid photos={this.state.photos} />
-            <button type="button" className="showAllPhotos" id="modalButton" >Show All Photos </button>
-          </div>
+            <div className="right">
+              <PhotoGrid photos={this.state.photos} />
+              <button type="button" className="showAllPhotos" id="modalButton">Show All Photos </button>
+            </div>
 
-          <div className="modal">
-            <Modal photos={this.state.photos} exitModal={this.exitModal.bind(this)} swipeToLast ={this.swipeToLast.bind(this)} swipeToNext={this.swipeToNext.bind(this)} />
-          </div>
+            <div className="modal">
+              <div className="modalPhotoContainer">
+                <Modal heroPhoto={this.state.heroPhoto} exitModal={this.exitModal} swipeToLast={this.swipeToLast.bind(this)} swipeToNext={this.swipeToNext.bind(this)} />
 
-         </ContentContainer>
-       </PhotoGalleryContainer>
+                {/* incluse exit modal */}
+              </div>
+            </div>
+
+          </ContentContainer>
+        </PhotoGalleryContainer>
+
+      </div>
     );
   }
 }
