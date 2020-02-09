@@ -7,27 +7,29 @@ function PhotoGrid({ photos }) {
   return (
     <div>
       {(photos.slice(0, 6)).map((photo) => {
-        const key = photo.photoId;
+        const photoId = photo.photoId;
         const photoUrl = photo.photoUrl;
         const alt = photo.alt;
         return (
-          <Photo key={key} photoUrl={photoUrl} alt={alt} />
+          <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
         );
       })}
     </div>
   );
 }
 
-PhotoGrid.propType = {
-  photos: Proptype.exact({
-    map: Proptype.array.isRequired,
-    photoId: Proptype.number,
-    photoUrl: Proptype.string.isRequired,
-    alt: Proptype.string.isRequired,
-    username: Proptype.string,
-    experienceId: Proptype.number,
-  }),
-};
+// PhotoGrid.propTypes = {
+//   photos: Proptype.array.isRequired,
+
+//   // Proptype.exact({
+//   //   map: Proptype.array.isRequired,
+//   //   photoId: Proptype.number,
+//   //   photoUrl: Proptype.string.isRequired,
+//   //   alt: Proptype.string.isRequired,
+//   //   username: Proptype.string,
+//   //   experienceId: Proptype.number,
+
+// };
 
 
 export default PhotoGrid;

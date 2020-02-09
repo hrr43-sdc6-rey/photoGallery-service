@@ -3,12 +3,12 @@ body {
 }
 
 .photoGalleryContainer {
-  background-color: #ffffff
+
 
 }
 
 .contentContainer {
-  padding: 47px;
+  padding: 50px;
   margin: 0 auto 0 auto;
   max-width: 1200px;
   display: flex;
@@ -44,12 +44,13 @@ body {
   flex-grow: 1;
   width: 200px;
   height: 200px;
-  background-color:#ffffff;
+  /* background-color:#ffffff; */
   margin: 7.5px;
   position: relative;
   overflow: hidden;
   display: inline-block;
   overflow: hidden;
+  z-index: -1;
 }
 
 .gridImage img{
@@ -58,7 +59,7 @@ body {
   max-height: 150%;
   object-fit: cover;
   vertical-align: bottom;
-
+  z-index: -1;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -67,8 +68,6 @@ body {
           transform: translate(-50%,-50%);
 }
 
-
-
 .showAllPhotos {
   width: 100%;
   margin-left: 7.5px;
@@ -76,4 +75,48 @@ body {
   font-weight: 400;
   color: #008489;
   font-size: 14px;
+}
+/*
+#modalButton:hover {
+  text-decoration: underline;
+} */
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top:0;
+  height: 100%;
+  width:100%;
+  /* overflow: auto; */
+  /* background-color: #ffffff; */
+  background-color:  #008489;
+}
+
+/* .modalContent { */
+  /* padding: 0 50px 50px 50px; */
+  /* margin: 0 auto 0 auto;
+}
+
+.exitButton {
+  color: #484848;
+  float: left;
+  font-size: 30px;
+  margin: 20px;
+  border: #484848;
+}
+
+.exitButton:hover {
+  text-decoration-color: yellow;
+}
+
+.hello {
+  background-color:  #008489;
+} */
+
+
+
+.titleContainer {
+  flex: sticky;
 }
