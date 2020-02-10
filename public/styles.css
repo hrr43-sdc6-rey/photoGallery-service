@@ -2,11 +2,6 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
-.photoGalleryContainer {
-
-
-}
-
 .contentContainer {
   padding: 50px;
   margin: 0 auto 0 auto;
@@ -24,7 +19,6 @@ body {
  justify-content: flex-start;
  width: 35%;
  font-family: 'Roboto', sans-serif;
- font-size: 26px;
  font-weight: 500;
  color: #484848;
 }
@@ -48,7 +42,6 @@ body {
   flex-grow: 1;
   width: 200px;
   height: 200px;
-  /* background-color:#ffffff; */
   margin: 7.5px;
   position: relative;
   overflow: hidden;
@@ -81,16 +74,11 @@ body {
   font-size: 14px;
 }
 
-
-
-
 .displayPhotoContainer {
   width: 715px;
   height: 550px;
   position: relative;
 }
-
-
 
 .modal {
   left: 0;
@@ -128,7 +116,6 @@ body {
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 300;
-
   text-decoration: none;
   flex: 1;
 }
@@ -139,6 +126,18 @@ body {
 
 #rightB {
   padding: 45% 5px 45% 50px;
+}
+
+.exit {
+  z-index: 7;
+  border: none;
+  color:  #484848;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: 300;
+  text-decoration: none;
+  left: 0;
+  top:0;
 }
 
 .fullPageModal {
@@ -152,4 +151,21 @@ body {
     padding: 100px;
     width: 100%;
     background-color:#ffffff;
-  }
+}
+
+#modalButton{
+    width: 100%;
+    margin-left: 7.5px;
+    padding-top: 23.5px;
+    font-weight: 400;
+    color: #008489;
+    font-size: 14px;
+    text-align: left;
+    text-decoration: none;
+    border: none;
+}
+
+#modalButton:hover {
+  text-decoration-line: underline;
+  font-weight: 500;
+}
