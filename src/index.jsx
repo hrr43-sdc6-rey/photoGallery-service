@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
@@ -55,20 +55,16 @@ class App extends Component {
       });
   }
 
-  openModal() {
-    let openOrClose= !!(true);
-    this.setState({
-      isOpen: openOrClose,
-    });
-  }
-
-  //conditional render
-    //if isOpen is false show regular
-    //if true, just show modal
 
   onClose() {
     this.setState({
-      isOpen: openOrClose,
+      isOpen: false,
+    });
+  }
+
+  openModal() {
+    this.setState({
+      isOpen: true,
     });
   }
 

@@ -11,4 +11,6 @@ function Close({ isOpen, exitModal }) {
   );
 }
 
+// does that work when you use the onClick that way? I would have just used {() => { exitModal() }}
+
 export default Close;
