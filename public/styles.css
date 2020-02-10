@@ -91,7 +91,9 @@ body {
   justify-content: space-between;
   align-content: flex-start;
   align-items: center;
-  background-color:  lightgrey;
+  background-color:  #ffffff;
+  position: fixed;
+  z-index: 5;
 }
 
 .displayPhoto img{

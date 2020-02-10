@@ -4,13 +4,13 @@ import Photo from './Photo.jsx';
 import Close from './ExitButton.jsx';
 
 
-function Modal({ heroPhoto, swipeToLast, swipeToNext, exitModal }) {
+function Modal({ heroPhoto, swipeToLast, swipeToNext, exitModal, isOpen}) {
   return (
 
     <div className="modal">
 
-      <Close onClick={() => { swipeToLast(); }} />
 
+    <Close></Close>
       <button type="button" className="scrollButtons" id="leftB" onClick={() => { swipeToLast(); }}>
         &lt;
       </button>

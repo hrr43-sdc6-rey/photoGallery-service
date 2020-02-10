@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import Proptype from 'prop-types';
 import PhotoGrid from './components/PhotoGrid.jsx';
 import Modal from './components/Modal.jsx';
+import Close from './components/ExitButton.jsx';
 import '../public/styles.css';
 
 
@@ -65,8 +66,7 @@ class App extends Component {
     //if isOpen is false show regular
     //if true, just show modal
 
-  exitModal() {
-    let openOrClose= !!(true);
+  onClose() {
     this.setState({
       isOpen: openOrClose,
     });
@@ -101,55 +101,58 @@ class App extends Component {
 //     show everything but the modal
 //     if it is, show just the modal and nothing else
 
-    if (!(this.isOpen)) {
-      return (
-        <div>
-          <PhotoGalleryContainer className="photoGalleryContainer">
-            <ContentContainer className="contentContainer">
-
-              <div className="left">
-                <div>
-                  <div className="titleContainer">
-                    <h2>Guest photos</h2>
-                  </div>
-                </div>
-              </div>
-
-              <div className="right">
-                <PhotoGrid photos={this.state.photos} />
-                <button type="button" className="showAllPhotos" id="modalButton" onClick={() => this.setState({ isOpen: true })}>Show All Photos </button>
-              </div>
-
-            </ContentContainer>
-          </PhotoGalleryContainer>
-
-        </div>
-      );
-    } if (this.isOpen) {
-      return (
-        <div>
-          <PhotoGalleryContainer className="photoGalleryContainer">
-            <ContentContainer className="contentContainer">
-
-              <div className="fullPageModal">
+    // if (!(this.isOpen)) {
 
 
-                <div className="modalPhotoContainer">
-                  <Modal heroPhoto={this.state.heroPhoto}
-                  isOpen={this.state.isOpen} exitModal={this.state.exitModal} swipeToLast={this.swipeToLast.bind(this)}
-                  swipeToNext={this.swipeToNext.bind(this)} />
 
-                  {/* include exit modal */}
-                </div>
+    let modalOn =  (
+      <div className="fullPageModal">
+{/*
+        <Close onClose={() => this.setState({ isOpen: false })} /> */}
 
-              </div>
+        <div className="modalPhotoContainer">
+          <Modal heroPhoto={this.state.heroPhoto}
+          // isOpen={this.state.isOpen}
+          exitModal={this.state.exitModal} swipeToLast={this.swipeToLast.bind(this)}
+          swipeToNext={this.swipeToNext.bind(this)} />
 
-            </ContentContainer>
-          </PhotoGalleryContainer>
+          {/* include exit modal */}
+         </div>
 
-        </div>
-      );
+      </div>
+    );
+
+    if (!(this.state.isOpen)) {
+      modalOn = null;
     }
+
+    return (
+      <div>
+        <PhotoGalleryContainer className="photoGalleryContainer">
+          <ContentContainer className="contentContainer">
+
+            <div className="left">
+              <div>
+                <div className="titleContainer">
+                  <h2>Guest photos</h2>
+                </div>
+              </div>
+            </div>
+
+            <div className="right">
+              <PhotoGrid photos={this.state.photos} />
+              <button type="button" className="showAllPhotos" id="modalButton" onClick={(e) => this.setState({ isOpen: true })}>Show All Photos </button>
+            </div>
+
+            <div>
+              {modalOn}
+            </div>
+
+          </ContentContainer>
+        </PhotoGalleryContainer>
+
+      </div>
+    );
   }
 }
 
