@@ -13,6 +13,7 @@ db.connect((error) => {
 });
 
 const getPhotos = (expId, callback) => {
+  // eslint-disable-next-line no-unused-vars
   const experienceId = expId;
   const grabAll = 'SELECT * FROM photos WHERE experienceId = ?';
   db.query(grabAll, expId, (error, response) => {
