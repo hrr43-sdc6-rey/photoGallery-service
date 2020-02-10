@@ -130,8 +130,35 @@ body {
   padding: 45% 5px 45% 50px;
 }
 
+
+#modalButton{
+  width: 100%;
+  margin-left: 7.5px;
+  padding-top: 23.5px;
+  font-weight: 400;
+  color: #008489;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  border: none;
+}
+
+#modalButton:hover {
+  text-decoration-line: underline;
+  font-weight: 500;
+}
+
+.fullPageModal {
+  display: grid;
+  margin: auto;
+  background-color:#ffffff;
+  left: 0;
+  top:0;
+  z-index: 6;
+}
+
 .exit {
-  z-index: 7;
+  z-index: 8;
   border: none;
   color:  #484848;
   font-family: 'Roboto', sans-serif;
@@ -140,34 +167,4 @@ body {
   text-decoration: none;
   left: 0;
   top:0;
-}
-
-.fullPageModal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: stretch;
-    margin: auto;
-    width: 50%;
-    padding: 100px;
-    width: 100%;
-    background-color:#ffffff;
-}
-
-#modalButton{
-    width: 100%;
-    margin-left: 7.5px;
-    padding-top: 23.5px;
-    font-weight: 400;
-    color: #008489;
-    font-size: 14px;
-    text-align: left;
-    text-decoration: none;
-    border: none;
-}
-
-#modalButton:hover {
-  text-decoration-line: underline;
-  font-weight: 500;
 }
