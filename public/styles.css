@@ -20,7 +20,7 @@ button:focus {
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
- flex: sticky;
+ flex: 1 150px;
  justify-content: flex-start;
  width: 35%;
  font-family: 'Roboto', sans-serif;
@@ -38,9 +38,6 @@ button:focus {
   width: 65%;
 }
 
-.titleContainer {
-  flex: sticky;
-}
 
 .gridPhoto {
   display: flex;
@@ -67,17 +64,17 @@ button:focus {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
-}
+        }
 
-.showAllPhotos {
-  width: 100%;
-  margin-left: 7.5px;
-  padding-top: 23.5px;
-  font-weight: 400;
-  color: #008489;
-  font-size: 14px;
+        .showAllPhotos {
+          width: 100%;
+          margin-left: 7.5px;
+          padding-top: 23.5px;
+          font-weight: 400;
+          color: #008489;
+          font-size: 14px;
 }
 
 .displayPhotoContainer {
@@ -113,8 +110,8 @@ button:focus {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 .scrollButtons {
@@ -175,12 +172,6 @@ button:focus {
   top:0;
 }
 
-.titleContainer {
-  position: sticky;
-  flex: sticky;
-}
-
-
 #photoNumber {
   font-weight: 500;
 }
@@ -197,4 +188,9 @@ button:focus {
   color: #484848;
   width: 100%;
   z-index: 10;
+}
+
+.titleContainer {
+  position: sticky;
+  float: left;
 }

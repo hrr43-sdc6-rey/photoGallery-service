@@ -57,14 +57,12 @@ class App extends Component {
   }
 
   clickOnGridPhoto() {
-    //open modal with the clicked on index
-
     const gridPhotoIndex = this.state.heroPhotoIndex;
     const modalPhoto = this.state.photos[gridPhotoIndex];
-
     this.setState({
       heroPhotoIndex: gridPhotoIndex,
       heroPhoto: modalPhoto,
+      isOpen: true,
     });
   }
 
@@ -147,12 +145,11 @@ class App extends Component {
             <div className="right">
               <PhotoGrid photos={this.state.photos}
               heroPhoto={this.state.heroPhoto}
-              clickOnGridPhoto={this.clickOnGridPhoto.bind(this)}
+              onClick={() => { swipeToLast(); }}
               />
 
               <button type="button" className="showAllPhotos" id="modalButton" onClick={() => this.setState({ isOpen: true })}>Show All Photos </button>
             </div>
-
 
           </ContentContainer>
         </PhotoGalleryContainer>

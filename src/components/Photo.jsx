@@ -6,8 +6,7 @@ function Photo({
   alt,
   username,
   photoId,
-  isOpen,
-  clickOnGridPhoto}) {
+  }) {
   return (
     <div>
       <img src={photoUrl} alt={alt} username={username} photoid={photoId} />

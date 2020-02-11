@@ -23,6 +23,7 @@ clickOnGridPhoto,
               <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
 
             </div>
+
           </div>
 
         );
