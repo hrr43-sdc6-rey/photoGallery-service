@@ -2,6 +2,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button:focus {
+  outline: none;
+}
+
 .contentContainer {
   padding: 50px;
   margin: 0 auto 0 auto;
@@ -16,11 +20,13 @@ body {
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ flex: sticky;
  justify-content: flex-start;
  width: 35%;
  font-family: 'Roboto', sans-serif;
  font-weight: 500;
  color: #484848;
+ position: sticky;
 }
 
 .right {
@@ -114,7 +120,7 @@ body {
 .scrollButtons {
   z-index: 5;
   border: none;
-  color:  #484848;
+  color: #484848;
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 300;
@@ -167,4 +173,28 @@ body {
   text-decoration: none;
   left: 0;
   top:0;
+}
+
+.titleContainer {
+  position: sticky;
+  flex: sticky;
+}
+
+
+#photoNumber {
+  font-weight: 500;
+}
+
+#photoAuthor {
+  font-weight: 400;
+}
+
+.photoInfo {
+  display: block;
+  padding-top: 600px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #484848;
+  width: 100%;
+  z-index: 10;
 }

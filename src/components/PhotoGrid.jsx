@@ -3,8 +3,13 @@ import PropTypes from 'prop-types';
 import Photo from './Photo.jsx';
 
 
-function PhotoGrid({ photos }) {
+function PhotoGrid({
+photos,
+isOpen,
+clickOnGridPhoto,
+ }) {
   return (
+
     <div>
       {(photos.slice(0, 6)).map((photo) => {
         const photoId = photo.photoId;
@@ -12,10 +17,13 @@ function PhotoGrid({ photos }) {
         const alt = photo.alt;
         return (
           <div className="gridPhoto">
-          <div className="gridImage">
-          <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
+
+            <div className="gridImage">
+
+              <Photo photoId={photoId} photoUrl={photoUrl} alt={alt} key={photoId} />
+
+            </div>
           </div>
-      </div>
 
         );
       })}

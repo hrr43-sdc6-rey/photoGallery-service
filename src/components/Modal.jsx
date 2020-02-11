@@ -5,15 +5,17 @@ import Photo from './Photo.jsx';
 //
 
 function Modal (
-  { heroPhoto,
+  { photos,
+    heroPhoto,
+    heroPhotoIndex,
+    username,
     swipeToLast,
     swipeToNext,
-    exitModal,
     isOpen,
   }
 ) {
   return (
-
+  <div>
     <div className="modal">
 
       <button type="button" className="scrollButtons" id="leftB" onClick={() => { swipeToLast(); }}>
@@ -31,6 +33,10 @@ function Modal (
           />
 
         </div>
+      <div className="photoInfo">
+            <p id="photoNumber">{heroPhotoIndex + 1}/{photos.length}</p>
+            <p id="photoAuthor">Photo by {heroPhoto.username}</p>
+      </div>
       </div>
 
       <button type="button" className="scrollButtons" id="rightB" onClick={() => { swipeToNext(); }}>
@@ -38,6 +44,8 @@ function Modal (
       </button>
 
     </div>
+
+  </div>
 
   );
 }

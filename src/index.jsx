@@ -27,6 +27,7 @@ class App extends Component {
       photos: [],
       heroPhoto: '',
       heroPhotoIndex: 0,
+      username: '',
       isOpen: false,
     };
   }
@@ -55,8 +56,19 @@ class App extends Component {
       });
   }
 
+  clickOnGridPhoto() {
+    //open modal with the clicked on index
+
+    const gridPhotoIndex = this.state.heroPhotoIndex;
+    const modalPhoto = this.state.photos[gridPhotoIndex];
+
+    this.setState({
+      heroPhotoIndex: gridPhotoIndex,
+      heroPhoto: modalPhoto,
+    });
+  }
+
   swipeToLast() {
-    const currentIn = this.state.heroPhotoIndex;
     let newHeroIndex = this.state.heroPhotoIndex - 1;
     let newHeroPhoto = this.state.photos[newHeroIndex];
 
@@ -72,7 +84,6 @@ class App extends Component {
 
 
   swipeToNext() {
-    const currentIndex = this.state.heroPhotoIndex;
     let updatedIndex = this.state.heroPhotoIndex + 1;
     let newPhoto = this.state.photos[updatedIndex];
 
@@ -97,8 +108,11 @@ class App extends Component {
 
 
           <div className="modalPhotoContainer">
-            <Modal heroPhoto={this.state.heroPhoto}
-              exitModal={this.state.exitModal}
+            <Modal
+              photos={this.state.photos}
+              heroPhoto={this.state.heroPhoto}
+              heroPhotoIndex={this.state.heroPhotoIndex}
+              username={this.state.username}
               swipeToLast={this.swipeToLast.bind(this)}
               swipeToNext={this.swipeToNext.bind(this)}
             />
@@ -131,7 +145,11 @@ class App extends Component {
             </div>
 
             <div className="right">
-              <PhotoGrid photos={this.state.photos} />
+              <PhotoGrid photos={this.state.photos}
+              heroPhoto={this.state.heroPhoto}
+              clickOnGridPhoto={this.clickOnGridPhoto.bind(this)}
+              />
+
               <button type="button" className="showAllPhotos" id="modalButton" onClick={() => this.setState({ isOpen: true })}>Show All Photos </button>
             </div>
 
