@@ -2,6 +2,10 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+button:focus {
+  outline: none;
+}
+
 .contentContainer {
   padding: 50px;
   margin: 0 auto 0 auto;
@@ -16,11 +20,13 @@ body {
  display: flex;
  flex-direction: row;
  flex-wrap: wrap;
+ flex: 1 150px;
  justify-content: flex-start;
  width: 35%;
  font-family: 'Roboto', sans-serif;
  font-weight: 500;
  color: #484848;
+ position: sticky;
 }
 
 .right {
@@ -32,9 +38,6 @@ body {
   width: 65%;
 }
 
-.titleContainer {
-  flex: sticky;
-}
 
 .gridPhoto {
   display: flex;
@@ -61,17 +64,17 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
           transform: translate(-50%,-50%);
-}
+        }
 
-.showAllPhotos {
-  width: 100%;
-  margin-left: 7.5px;
-  padding-top: 23.5px;
-  font-weight: 400;
-  color: #008489;
-  font-size: 14px;
+        .showAllPhotos {
+          width: 100%;
+          margin-left: 7.5px;
+          padding-top: 23.5px;
+          font-weight: 400;
+          color: #008489;
+          font-size: 14px;
 }
 
 .displayPhotoContainer {
@@ -107,14 +110,14 @@ body {
   left: 50%;
   top: 50%;
   -webkit-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+  -ms-transform: translate(-50%,-50%);
+  transform: translate(-50%,-50%);
 }
 
 .scrollButtons {
   z-index: 5;
   border: none;
-  color:  #484848;
+  color: #484848;
   font-family: 'Roboto', sans-serif;
   font-size: 30px;
   font-weight: 300;
@@ -130,8 +133,35 @@ body {
   padding: 45% 5px 45% 50px;
 }
 
+
+#modalButton{
+  width: 100%;
+  margin-left: 7.5px;
+  padding-top: 23.5px;
+  font-weight: 400;
+  color: #008489;
+  font-size: 14px;
+  text-align: left;
+  text-decoration: none;
+  border: none;
+}
+
+#modalButton:hover {
+  text-decoration-line: underline;
+  font-weight: 500;
+}
+
+.fullPageModal {
+  display: grid;
+  margin: auto;
+  background-color:#ffffff;
+  left: 0;
+  top:0;
+  z-index: 6;
+}
+
 .exit {
-  z-index: 7;
+  z-index: 8;
   border: none;
   color:  #484848;
   font-family: 'Roboto', sans-serif;
@@ -142,32 +172,25 @@ body {
   top:0;
 }
 
-.fullPageModal {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-content: stretch;
-    margin: auto;
-    width: 50%;
-    padding: 100px;
-    width: 100%;
-    background-color:#ffffff;
-}
-
-#modalButton{
-    width: 100%;
-    margin-left: 7.5px;
-    padding-top: 23.5px;
-    font-weight: 400;
-    color: #008489;
-    font-size: 14px;
-    text-align: left;
-    text-decoration: none;
-    border: none;
-}
-
-#modalButton:hover {
-  text-decoration-line: underline;
+#photoNumber {
   font-weight: 500;
+}
+
+#photoAuthor {
+  font-weight: 400;
+}
+
+.photoInfo {
+  display: block;
+  padding-top: 600px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  color: #484848;
+  width: 100%;
+  z-index: 10;
+}
+
+.titleContainer {
+  position: sticky;
+  float: left;
 }

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Proptype from 'prop-types';
 import PhotoGrid from './components/PhotoGrid.jsx';
 import Modal from './components/Modal.jsx';
-import Close from './components/ExitButton.jsx';
+// import Close from './components/ExitButton.jsx';
 import '../public/styles.css';
 
 
@@ -27,6 +27,7 @@ class App extends Component {
       photos: [],
       heroPhoto: '',
       heroPhotoIndex: 0,
+      username: '',
       isOpen: false,
     };
   }
@@ -55,66 +56,68 @@ class App extends Component {
       });
   }
 
-
-  onClose() {
+  clickOnGridPhoto() {
+    const gridPhotoIndex = this.state.heroPhotoIndex;
+    const modalPhoto = this.state.photos[gridPhotoIndex];
     this.setState({
-      isOpen: false,
-    });
-  }
-
-  openModal() {
-    this.setState({
+      heroPhotoIndex: gridPhotoIndex,
+      heroPhoto: modalPhoto,
       isOpen: true,
     });
   }
 
   swipeToLast() {
-    const newIndex = this.state.heroPhotoIndex - 1;
+    let newHeroIndex = this.state.heroPhotoIndex - 1;
+    let newHeroPhoto = this.state.photos[newHeroIndex];
 
-    const newHeroPhoto = this.state.photos[newIndex];
-
+    if (newHeroIndex <= -1) {
+      newHeroIndex = this.state.photos.length - 1;
+      newHeroPhoto = this.state.photos[newHeroIndex];
+    }
     this.setState({
-      heroPhotoIndex: newIndex,
+      heroPhotoIndex: newHeroIndex,
       heroPhoto: newHeroPhoto,
     });
-    console.log('NEW INDEX: ', newIndex);
   }
 
+
   swipeToNext() {
-    const currentPhotoIndex = this.state.heroPhotoIndex + 1;
-    const lastHeroPhoto = this.state.photos[currentPhotoIndex];
+    let updatedIndex = this.state.heroPhotoIndex + 1;
+    let newPhoto = this.state.photos[updatedIndex];
+
+    if (updatedIndex > this.state.photos.length - 1) {
+      updatedIndex = 0;
+      newPhoto = this.state.photos[updatedIndex];
+    }
+
     this.setState({
-      heroPhotoIndex: currentPhotoIndex,
-      heroPhoto: lastHeroPhoto,
+      heroPhotoIndex: updatedIndex,
+      heroPhoto: newPhoto,
     });
   }
 
+
   render() {
-//conditional render
- //if modal is open is true do this
- //if this.state == false
-//  return
-//     show everything but the modal
-//     if it is, show just the modal and nothing else
+    let modalOn = (
+      <div>
 
-    // if (!(this.isOpen)) {
+        <div className="fullPageModal">
+          <button type="button" className="exit" onClick={() => this.setState({ isOpen: false })}>&times;</button>
 
 
+          <div className="modalPhotoContainer">
+            <Modal
+              photos={this.state.photos}
+              heroPhoto={this.state.heroPhoto}
+              heroPhotoIndex={this.state.heroPhotoIndex}
+              username={this.state.username}
+              swipeToLast={this.swipeToLast.bind(this)}
+              swipeToNext={this.swipeToNext.bind(this)}
+            />
 
-    let modalOn =  (
-      <div className="fullPageModal">
-{/*
-        <Close onClose={() => this.setState({ isOpen: false })} /> */}
+          </div>
 
-        <div className="modalPhotoContainer">
-          <Modal heroPhoto={this.state.heroPhoto}
-          // isOpen={this.state.isOpen}
-          exitModal={this.state.exitModal} swipeToLast={this.swipeToLast.bind(this)}
-          swipeToNext={this.swipeToNext.bind(this)} />
-
-          {/* include exit modal */}
-         </div>
-
+        </div>
       </div>
     );
 
@@ -124,8 +127,12 @@ class App extends Component {
 
     return (
       <div>
+
         <PhotoGalleryContainer className="photoGalleryContainer">
           <ContentContainer className="contentContainer">
+            <div>
+              {modalOn}
+            </div>
 
             <div className="left">
               <div>
@@ -136,12 +143,12 @@ class App extends Component {
             </div>
 
             <div className="right">
-              <PhotoGrid photos={this.state.photos} />
-              <button type="button" className="showAllPhotos" id="modalButton" onClick={(e) => this.setState({ isOpen: true })}>Show All Photos </button>
-            </div>
+              <PhotoGrid photos={this.state.photos}
+              heroPhoto={this.state.heroPhoto}
+              onClick={() => { swipeToLast(); }}
+              />
 
-            <div>
-              {modalOn}
+              <button type="button" className="showAllPhotos" id="modalButton" onClick={() => this.setState({ isOpen: true })}>Show All Photos </button>
             </div>
 
           </ContentContainer>
