@@ -26,14 +26,18 @@ const getPhotos = (expId, callback) => {
   });
 };
 
-const postPhoto = (callback) => {
-  // try deleting this later
-  callback();
+const postPhoto = (data, callback) => {
+  const sql = 'INSERT INTO photos (photourl, alt, username, experienceid) VALUES (?, ?, ?, ?);';
+  const values = [data.photoUrl, data.alt, data.username, data.experienceId];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
+    }
+  });
 };
 
-const test = () => { console.log('called test!'); };
-
-
 module.exports = {
-  db, getPhotos, test,
+  db, getPhotos, postPhoto,
 };

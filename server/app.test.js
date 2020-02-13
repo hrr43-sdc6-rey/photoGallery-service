@@ -5,21 +5,12 @@ const db = require('../database/index.jsx');
 const request = supertest(app);
 
 
-test('GET /test returns "pass"!', async (done) => {
-  db.test = jest.fn();
-
-  const response = await request.get('/test');
-
-  expect(response.status).toBe(200);
-  expect(response.body.message).toBe('pass!');
-  done();
-});
-
-
 describe('requests return responses', () => {
   test('GET /:id returns 200', async (done) => {
     const response = await request.get('/42');
+
     expect(response.status).toBe(200);
+
     done();
   });
 });
