@@ -21,3 +21,8 @@
 6. Run `npm run seed` to seed the MySQL database
 7. Run `npm run start` to start up the server
 
+### API
+Create	/photos/	POST	create new photo url record
+Read	/photos/:id	GET	return photo url with matching id
+Update	/photos/:id	PUT	update photo url with matching id
+Delete	/photos/:id	DELETE	update photo url with matching id
