@@ -20,20 +20,20 @@ app.get('/test', async (req, res) => {
   res.json({ message: 'pass!' });
 });
 
-// app.get('/:id', (req, res) => {
-//   res.render('../public/index.html');
-// });
-//
-// app.get('/photos/:id', (req, res) => {
-//   const requestExpId = parseInt(req.params.id, 10);
-//   db.getPhotos(requestExpId, (err, exData) => {
-//     if (err) {
-//       res.status(400).send(err);
-//     } else {
-//       res.status(200).send(exData);
-//     }
-//   });
-// });
+app.get('/:id', (req, res) => {
+  res.render('../public/index.html');
+});
+
+app.get('/photos/:id', (req, res) => {
+  const requestExpId = parseInt(req.params.id, 10);
+  db.getPhotos(requestExpId, (err, exData) => {
+    if (err) {
+      res.status(400).send(err);
+    } else {
+      res.status(200).send(exData);
+    }
+  });
+});
 
 /*
   photoId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
