@@ -1,6 +1,7 @@
-
 const mysql = require('mysql');
 const config = require('../config/config.js');
+
+console.log(config);
 
 const db = mysql.createConnection(config);
 
@@ -8,7 +9,7 @@ db.connect((error) => {
   if (error) {
     console.log(error);
   } else {
-    console.log('==mySQL is connected==');
+    // console.log('==mySQL is connected==');
   }
 });
 
@@ -26,7 +27,9 @@ const getPhotos = (expId, callback) => {
   });
 };
 
+const test = () => { console.log('called test!'); };
+
 
 module.exports = {
-  db, getPhotos,
+  db, getPhotos, test,
 };
