@@ -42,8 +42,11 @@ app.get('/photos/:id', (req, res) => {
   username varchar(40) NOT NULL,
   experienceId int NOT NULL
 */
+app.post('/photos', (req, res) => {
+  db.postPhoto(req.params, () => res.status(200).send());
+});
 
-// app.put('/photos/:id/photoUrl/:photoUrl/alt/:alt/username/:username/experienceId/:experienceId',
+// app.put('/photos/photoUrl/:photoUrl/alt/:alt/username/:username/experienceId/:experienceId',
 //   (req, res) => {
 //     console.log(req.params);
 //     // db.postPhoto(req.

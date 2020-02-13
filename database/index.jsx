@@ -26,6 +26,11 @@ const getPhotos = (expId, callback) => {
   });
 };
 
+const postPhoto = (callback) => {
+  // try deleting this later
+  callback();
+};
+
 const test = () => { console.log('called test!'); };
 
 
