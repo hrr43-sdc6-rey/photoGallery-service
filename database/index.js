@@ -5,11 +5,7 @@ const config = require('../config/config.js');
 const db = mysql.createConnection(config);
 
 db.connect((error) => {
-  if (error) {
-    console.log(error);
-  } else {
-    // console.log('==mySQL is connected==');
-  }
+  if (error) { console.log(error); }
 });
 
 const getPhotos = (expId, callback) => {
@@ -38,6 +34,29 @@ const postPhoto = (data, callback) => {
   });
 };
 
+const updatePhoto = (id, data, callback) => {
+  const sql = 'UPDATE photos SET photourl = ?, alt = ?, username = ?, experienceid = ? WHERE photoid = ?;';
+  const values = [data.photoUrl, data.alt, data.username, data.experienceId, id];
+  db.query(sql, values, (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
+const deletePhoto = (id, callback) => {
+  const sql = 'DELETE FROM photos WHERE photoid = ?;';
+  db.query(sql, id, (err, result) => {
+    if (err) {
+      callback(err);
+    } else {
+      callback(null, result);
+    }
+  });
+};
+
 module.exports = {
-  db, getPhotos, postPhoto,
+  db, getPhotos, postPhoto, updatePhoto, deletePhoto,
 };

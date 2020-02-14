@@ -5,7 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "test": "jest --watch",
-    "build": "webpack -d --mode development --watch --config webpack.config.js",
+    "build": "webpack -d --mode development --watch database/ --config webpack.config.js",
     "start": "nodemon ./server/index.js --watch",
     "seed": "node ./database/seed.js"
   },
