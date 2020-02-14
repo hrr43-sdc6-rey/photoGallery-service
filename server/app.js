@@ -3,12 +3,9 @@ const cors = require('cors');
 
 const app = express();
 const bodyParser = require('body-parser');
-const db = require('../database/index.jsx');
-
+const db = require('../database/index.js');
 
 app.use(cors());
-
-
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -35,21 +32,55 @@ app.get('/photos/:id', (req, res) => {
   });
 });
 
-/*
-  photoId int NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  photoUrl varchar(200) NOT NULL,
-  alt varchar(125) NOT NULL,
-  username varchar(40) NOT NULL,
-  experienceId int NOT NULL
-*/
 app.post('/photos', (req, res) => {
-  db.postPhoto(req.params, () => res.status(200).send());
+  db.postPhoto(
+    {
+      photoUrl: req.body.photoUrl,
+      alt: req.body.alt,
+      username: req.body.username,
+      experienceId: req.body.experienceId,
+    },
+    (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    },
+  );
 });
 
-// app.put('/photos/photoUrl/:photoUrl/alt/:alt/username/:username/experienceId/:experienceId',
-//   (req, res) => {
-//     console.log(req.params);
-//     // db.postPhoto(req.
-//   });
+app.put('/photos/:id', (req, res) => {
+  db.updatePhoto(
+    req.params.id,
+    {
+      photoUrl: req.body.photoUrl,
+      alt: req.body.alt,
+      username: req.body.username,
+      experienceId: req.body.experienceId,
+    },
+    (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    },
+  );
+});
+
+app.delete('/photos/:id', (req, res) => {
+  db.deletePhoto(
+    req.params.id,
+    (err, result) => {
+      if (err) {
+        res.status(400).send(err);
+      } else {
+        res.status(200).send(result);
+      }
+    },
+  );
+});
+
 
 module.exports = app;
