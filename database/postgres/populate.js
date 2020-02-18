@@ -9,17 +9,23 @@ const config = require('./config.js');
   const client = await pool.connect();
 
   const loadStream = new stream.Writable();
+  let cache = [];
   loadStream._write = async (chunk, encoding, done) => {
-    const parsed = JSON.parse(chunk);
     const query = 'INSERT INTO photos (photoUrl, alt, username, experienceId) VALUES ($1, $2, $3, $4)';
+    const parsed = JSON.parse(chunk);
     const values = [parsed.photoUrl, parsed.alt, parsed.username, parsed.experienceId];
-    try {
-      await client.query(query, values);
-      await client.query('COMMIT');
-    } catch (e) {
-      await client.query('ROLLBACK');
-      client.release();
-      throw e;
+    if (cache.length < 10000) {
+      cache.push(values);
+    } else {
+      try {
+        await client.query(query, values);
+        await client.query('COMMIT');
+      } catch (e) {
+        await client.query('ROLLBACK');
+        client.release();
+        throw e;
+      }
+      cache = [values];
     }
     done();
   };
