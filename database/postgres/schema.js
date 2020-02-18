@@ -11,7 +11,7 @@ async function createTable() {
     photoUrl varchar(200) NOT NULL,
     alt varchar(125) NOT NULL,
     username varchar(40) NOT NULL,
-    experienceId int NOT NULL
+    experienceId integer NOT NULL
     );
   `);
   await pool.end();
