@@ -14,9 +14,9 @@ const config = require('./config.js');
     const query = 'INSERT INTO photos (photoUrl, alt, username, experienceId) VALUES ($1, $2, $3, $4)';
     const parsed = JSON.parse(chunk);
     const values = [parsed.photoUrl, parsed.alt, parsed.username, parsed.experienceId];
-    if (cache.length < 10000) {
-      cache.push(values);
-    } else {
+    // if (cache.length < 10000) {
+    //  cache.push(values);
+    // } else {
       try {
         await client.query(query, values);
         await client.query('COMMIT');
@@ -25,8 +25,8 @@ const config = require('./config.js');
         client.release();
         throw e;
       }
-      cache = [values];
-    }
+    //  cache = [values];
+    // }
     done();
   };
 

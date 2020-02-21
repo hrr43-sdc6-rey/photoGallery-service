@@ -12,8 +12,8 @@ clickOnGridPhoto,
 
     <div>
       {(photos.slice(0, 6)).map((photo) => {
-        const photoId = photo.photoId;
-        const photoUrl = photo.photoUrl;
+        const photoId = photo.photoid;
+        const photoUrl = photo.photourl;
         const alt = photo.alt;
         return (
           <div className="gridPhoto">

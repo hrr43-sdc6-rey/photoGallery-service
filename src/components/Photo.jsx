@@ -1,12 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Photo({
+function Photo(
+  {
   photoUrl,
   alt,
   username,
   photoId,
-  }) {
+  }
+  ) {
   return (
     <div>
       <img src={photoUrl} alt={alt} username={username} photoid={photoId} />

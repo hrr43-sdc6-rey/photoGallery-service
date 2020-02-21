@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 import styled from 'styled-components';
-import Proptype from 'prop-types';
+// import Proptype from 'prop-types';
 import PhotoGrid from './components/PhotoGrid.jsx';
 import Modal from './components/Modal.jsx';
 // import Close from './components/ExitButton.jsx';
@@ -46,8 +46,8 @@ class App extends Component {
         const photos = res.data;
         const heroPhoto = photos[0];
         this.setState({
-          photos: photos,
-          heroPhoto: heroPhoto,
+          photos,
+          heroPhoto,
         });
         console.log('HERO PHOTO: ', this.state.heroPhoto);
       })
@@ -143,9 +143,10 @@ class App extends Component {
             </div>
 
             <div className="right">
-              <PhotoGrid photos={this.state.photos}
-              heroPhoto={this.state.heroPhoto}
-              onClick={() => { swipeToLast(); }}
+              <PhotoGrid
+                photos={this.state.photos}
+                heroPhoto={this.state.heroPhoto}
+                onClick={() => { swipeToLast(); }}
               />
 
               <button type="button" className="showAllPhotos" id="modalButton" onClick={() => this.setState({ isOpen: true })}>Show All Photos </button>

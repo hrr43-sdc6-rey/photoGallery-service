@@ -3,10 +3,11 @@ const cors = require('cors');
 
 const app = express();
 const bodyParser = require('body-parser');
-const db = require('../database/index.js');
+// const db = require('../database/mySQL/index.js');
+const db = require('../database/postgres/index.js');
 
 app.use(cors());
-app.use(express.static('./public'));
+app.use(express.static(`${__dirname}/../public`));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -18,7 +19,7 @@ app.get('/test', async (req, res) => {
 });
 
 app.get('/:id', (req, res) => {
-  res.render('../public/index.html');
+  res.render(`${__dirname}/../public/index.html`);
 });
 
 app.get('/photos/:id', (req, res) => {

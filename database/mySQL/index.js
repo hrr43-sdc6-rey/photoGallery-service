@@ -1,5 +1,5 @@
 const mysql = require('mysql');
-const config = require('../config/config.js');
+const config = require('../../config/config.js');
 
 
 const db = mysql.createConnection(config);
@@ -17,6 +17,7 @@ const getPhotos = (expId, callback) => {
       console.log('ERROR: ', error);
       callback(error);
     } else {
+      console.log(response);
       callback(null, response);
     }
   });
