@@ -1,6 +1,7 @@
 node_modules
 dist
 notes.txt
-config/config.js
+config.js
 coverage
 public/bundle.js
+*.csv
