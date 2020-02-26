@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 
 function Photo(
   {
-  photoUrl,
-  alt,
-  username,
-  photoId,
-  }
-  ) {
+    photoUrl,
+    alt,
+    username,
+    photoId,
+  },
+) {
   return (
     <div>
       <img src={photoUrl} alt={alt} username={username} photoid={photoId} />
 
     </div>
-);
+  );
 }
 
 // // Photo.propType = {
